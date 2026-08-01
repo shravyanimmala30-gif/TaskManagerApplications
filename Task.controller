@@ -1,0 +1,28 @@
+package com.example.demo;
+import org.springframework.web.bind.annotation.*;
+import java.util.*;
+@RestController
+@RequestMapping("/tasks")
+public class TaskController {
+    private List<Task> tasks = new ArrayList<>();
+
+    @GetMapping
+    public List<Task> tasks = Array.asList( 
+            new Task(1L, "Learn Spring boot","watch tutorial and code along", false),
+            new Task(2L, "Build a Project" , "Create task manager app", false),
+            new Task(3L, "Deploy to cloud","put it on the internet", true
+    );
+    @GetMapping
+    public List<Task> getAllTasks() {
+        return tasks;
+    }
+    @GetMapping("/{id}")
+    public Task getTaskById(@PathVariable long id) {
+        for (Task task : tasks) {
+            if (task.getId() .equals(id)) {
+                return task;
+            }
+        }
+        return null;
+    }
+}
